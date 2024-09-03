@@ -1,9 +1,13 @@
+:root {
+    --color-blue: rgb(0, 119, 255);
+}
 body {
     margin: 0;
 }
 div {
     box-sizing: border-box;
 }
+
 ul,
 li {
     list-style: none;
@@ -14,6 +18,7 @@ input,
 button {
     border: none;
     box-sizing: border-box;
+    cursor: pointer;
 }
 
 .contact-list-wrap {
@@ -29,39 +34,50 @@ button {
     width: 100%;
     justify-content: space-between;
 }
+/* ===== form ===== */
 .contact-form-wrap {
-    width: 40%;
     padding: 1rem;
     border: 1px solid;
+    width: 40%;
     border-radius: 1rem;
 }
+.contact-form-wrap > * {
+    margin-top: 0.7rem;
+}
+
 .contact-form-wrap > li {
-    margin: 0.5rem 0;
+    display: flex;
+}
+.contact-form-essential {
+    flex-direction: column;
+}
+
+.contact-form-essential > div {
+    width: 100%;
     display: flex;
     justify-content: space-between;
 }
-.contact-form-wrap > li > label {
+.contact-form-essential > p {
+    padding: 0;
+    margin: 0;
+    margin-left: 30%;
+    font-size: 0.8rem;
+    color: red;
+}
+.contact-form-wrap label {
     width: 30%;
 }
-.contact-form-wrap > li > input {
-    width: 60%;
+.contact-form-wrap input {
     border: 1px solid;
-    padding: 0.3rem;
+    width: 70%;
 }
 .contact-form-wrap > button {
-    display: block;
-    margin: 0.5rem 0;
-    padding: 0.5rem;
     width: 100%;
-    color: white;
-    background-color: rgb(0, 119, 255);
+    padding: 0.5rem 0;
     border-radius: 1rem;
-    cursor: pointer;
+    background-color: var(--color-blue);
 }
-.contact-form-wrap > button:hover {
-    transition: 0.2s;
-    background-color: rgb(91, 170, 255);
-}
+/* ===== list ===== */
 .saved-contact-list-wrap {
     width: 50%;
 }
