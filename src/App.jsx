@@ -7,14 +7,15 @@ import "./index.css";
 import { useState } from "react";
 
 function App() {
+    // 연락처 목록
     let list = JSON.parse(localStorage.getItem("contactList")) || [];
-    let group = JSON.parse(localStorage.getItem("group")) || ["가족", "친구", "직장"];
     let [contactList, setContactList] = useState([...list]);
+    let [showDetail, setShowDetail] = useState(false);
+    let [index, setIndex] = useState(0);
+    // 그룹 목록
+    let group = JSON.parse(localStorage.getItem("groups")) || ["가족", "친구", "직장"];
     let [groups, setGroups] = useState([...group]);
     let [showGroup, setShowGroup] = useState(false);
-    let [showDetail, setShowDetail] = useState(false);
-    /** 보여줄 모달 인덱스 */
-    let [index, setIndex] = useState(0);
     return (
         <div className="app">
             <header className="header">

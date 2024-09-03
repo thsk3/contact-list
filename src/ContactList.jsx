@@ -1,5 +1,24 @@
+/** 추가해야 할 것
+ * 1. 수정 기능 추가
+ * 2. 리스트 검색 기능 추가
+ * 3. 전체 리스트 보여주는 기능 추가
+ * 4. 중복된 번호일 때 생성 안되도록 하기
+ */
 export default function ContactList({ contactList, setContactList, setIndex, setShowDetail }) {
     let keyWord = "";
+    const searchContact = () => {
+        console.log(keyWord);
+    };
+    const showDetail = (i) => {
+        setIndex(i);
+        setShowDetail(true);
+    };
+    const deleteContact = (i) => {
+        let copy = [...contactList];
+        copy.splice(i, 1);
+        setContactList(copy);
+        localStorage.setItem("contactList", JSON.stringify(copy));
+    };
     return (
         <div className="contact-list-wrap">
             <form>
@@ -11,7 +30,7 @@ export default function ContactList({ contactList, setContactList, setIndex, set
                     onKeyDown={(e) => {
                         e.preventDefault();
                         if (e.key === "Enter") {
-                            console.log(keyWord);
+                            searchContact();
                         }
                     }}></input>
                 <button>전체리스트 보기</button>
@@ -28,17 +47,13 @@ export default function ContactList({ contactList, setContactList, setIndex, set
                             <p className="contact-list-btn">
                                 <span
                                     onClick={() => {
-                                        setIndex(i);
-                                        setShowDetail(true);
+                                        showDetail(i);
                                     }}>
                                     세부사항
                                 </span>
                                 <span
                                     onClick={() => {
-                                        let copy = [...contactList];
-                                        copy.splice(i, 1);
-                                        setContactList(copy);
-                                        localStorage.setItem("contactList", JSON.stringify(copy));
+                                        deleteContact(i);
                                     }}>
                                     삭제
                                 </span>

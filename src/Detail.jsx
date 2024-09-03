@@ -1,8 +1,9 @@
+/** 추가해야 할 것
+ * 1. 글자가 공간을 넘어갈 때 처리하기
+ * 2. 모달에 흰배경 보이는거 고치기
+ */
 export default function Detail({ contactList, index, setshowDetail }) {
     let info = contactList[index];
-    console.log(contactList);
-    console.log(index);
-    console.log(info);
     return (
         <div className="modal-wrap">
             <div className="modal-detail">
