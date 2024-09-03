@@ -141,7 +141,7 @@ button {
     padding: 0.3rem 0.5rem;
     border: 1px solid;
 }
-.detail-wrap {
+.modal-wrap {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -149,7 +149,7 @@ button {
     left: 0;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.detail {
+.modal-detail {
     position: absolute;
     padding: 2rem;
     left: 50%;
@@ -159,19 +159,52 @@ button {
     height: 300px;
     background-color: white;
 }
-.detail > button {
+.modal-detail > button {
     position: absolute;
     right: 1rem;
     top: 1rem;
 }
-.detail > h2 {
+.modal-detail > h2 {
     margin: 0;
     text-align: center;
 }
-.detail > p > span:nth-of-type(1) {
+.modal-detail > p > span:nth-of-type(1) {
     font-weight: bold;
     display: inline-block;
     width: 40%;
+}
+.modal-detail > ul {
+    height: 150px;
+    margin: 0.5rem 0;
+    overflow-y: auto;
+}
+.modal-detail > ul > li {
+    padding: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+.modal-detail > ul > li > span:nth-of-type(2) {
+    cursor: pointer;
+}
+.group-add-btn {
+    display: flex;
+    justify-content: space-between;
+}
+.group-add-btn > * {
+    padding: 0.5rem 1rem;
+}
+.group-add-btn > input {
+    width: 68%;
+    border: 1px solid;
+}
+.group-add-btn > button {
+    width: 30%;
+    color: white;
+    background-color: var(--color-blue-dark);
+}
+.group-add-btn > button:hover {
+    transition: 0.2s;
+    background-color: var(--color-blue);
 }
 /* footer */
 .footer {

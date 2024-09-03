@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-export default function ContactListForm({ contactList, setContactList, groups }) {
+export default function ContactListForm({ contactList, setContactList, groups, setShowGroup }) {
     let inputRef = useRef([]);
     let data = {
         name: "",
@@ -12,7 +12,6 @@ export default function ContactListForm({ contactList, setContactList, groups })
     let regNumber = /^010-[0-9]{3,4}-[0-9]{4}/;
     /** check [name, number]  */
     let [check, setCheck] = useState([true, true]);
-
     /** 사용자 입력 저장 함수 */
     const saveData = () => {
         let r = checkData();
@@ -75,7 +74,7 @@ export default function ContactListForm({ contactList, setContactList, groups })
                             <option key={i}>{group}</option>
                         ))}
                     </select>
-                    <button>조직추가</button>
+                    <button onClick={() => setShowGroup(true)}>조직추가</button>
                 </div>
             </li>
             <li>

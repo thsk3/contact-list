@@ -4,8 +4,8 @@ export default function Detail({ contactList, index, setshowDetail }) {
     console.log(index);
     console.log(info);
     return (
-        <div className="detail-wrap">
-            <div className="detail">
+        <div className="modal-wrap">
+            <div className="modal-detail">
                 <button onClick={() => setshowDetail(false)}>닫기</button>
                 <h2>연락처 상세 정보</h2>
                 <p>

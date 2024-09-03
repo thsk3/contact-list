@@ -1,12 +1,5 @@
-import { useState } from "react";
-import Detail from "./Detail";
-
-export default function ContactList({ contactList, setContactList }) {
+export default function ContactList({ contactList, setContactList, setIndex, setShowDetail }) {
     let keyWord = "";
-
-    let [showDetail, setShowDetail] = useState(false);
-    /** 보여줄 모달 인덱스 */
-    let [index, setIndex] = useState(0);
     return (
         <div className="contact-list-wrap">
             <form>
@@ -36,7 +29,6 @@ export default function ContactList({ contactList, setContactList }) {
                                 <span
                                     onClick={() => {
                                         setIndex(i);
-                                        console.log(index);
                                         setShowDetail(true);
                                     }}>
                                     세부사항
@@ -55,8 +47,6 @@ export default function ContactList({ contactList, setContactList }) {
                     );
                 })}
             </ul>
-
-            {showDetail ? <Detail contactList={contactList} index={index} setshowDetail={setShowDetail}></Detail> : <></>}
         </div>
     );
 }
