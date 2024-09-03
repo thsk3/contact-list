@@ -71,9 +71,6 @@ export default function ContactListForm({ contactList, setContactList, groups })
                         onChange={(e) => {
                             data.group = e.target.value;
                         }}>
-                        <option selected disabled hidden>
-                            선택
-                        </option>
                         {groups.map((group, i) => (
                             <option key={i}>{group}</option>
                         ))}

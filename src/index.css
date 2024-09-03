@@ -23,7 +23,9 @@ button {
     box-sizing: border-box;
     cursor: pointer;
 }
-
+#root {
+    position: relative;
+}
 .app {
     margin: auto;
     width: calc(100% - 2rem);
@@ -173,7 +175,7 @@ button {
 }
 /* footer */
 .footer {
-    height: 5rem;
+    height: 6rem;
 }
 
 @media (max-width: 768px) {

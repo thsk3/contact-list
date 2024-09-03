@@ -1,4 +1,8 @@
-export default function Detail({ info, setshowDetail }) {
+export default function Detail({ contactList, index, setshowDetail }) {
+    let info = contactList[index];
+    console.log(contactList);
+    console.log(index);
+    console.log(info);
     return (
         <div className="detail-wrap">
             <div className="detail">
