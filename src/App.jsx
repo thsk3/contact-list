@@ -1,6 +1,25 @@
-import "./reset.css";
 import "./index.css";
+import { useState } from "react";
 function App() {
+    let list = JSON.parse(localStorage.getItem("contactList")) || [];
+    let group = JSON.parse(localStorage.getItem("group")) || ["가족", "친구", "직장"];
+    let [contactList, setContactList] = useState([...list]);
+    let [groups, setGroups] = useState([...group]);
+    let data = {
+        name: "",
+        number: "",
+        group: "",
+        record: "",
+    };
+    let [input, setInput] = useState({ ...data });
+    console.log(contactList);
+    const savePhone = () => {
+        let copy = [...contactList];
+        copy.push(data);
+        setContactList(copy);
+        localStorage.setItem("contactList", JSON.stringify(copy));
+    };
+    const checkPhone = () => {};
     return (
         <div className="contact-list-wrap">
             <header className="header">
@@ -9,25 +28,52 @@ function App() {
             <main className="main">
                 <ul className="contact-form-wrap">
                     <li>
-                        <label>이름</label>
-                        <input type="text" placeholder="이름"></input>
+                        <label htmlFor="name">이름</label>
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="이름"
+                            onChange={(e) => {
+                                data.name = e.target.value;
+                            }}></input>
                     </li>
                     <li>
-                        <label>전화 번호</label>
-                        <input type="text" placeholder="이름"></input>
+                        <label htmlFor="number">전화 번호</label>
+                        <input
+                            type="text"
+                            id="number"
+                            placeholder="이름"
+                            onChange={(e) => {
+                                data.number = e.target.value;
+                            }}></input>
                     </li>
                     <li>
-                        <label>그룹</label>
+                        <label htmlFor="group">그룹</label>
                         <div>
-                            <select></select>
+                            <select id="group">
+                                {groups.map((group, i) => (
+                                    <option key={i}>{group}</option>
+                                ))}
+                            </select>
                             <button>조직추가</button>
                         </div>
                     </li>
                     <li>
-                        <label>간단한 기록</label>
-                        <input type="text" placeholder="간단한 기록"></input>
+                        <label htmlFor="record">간단한 기록</label>
+                        <input
+                            type="text"
+                            id="record"
+                            placeholder="간단한 기록"
+                            onChange={(e) => {
+                                data.record = e.target.value;
+                            }}></input>
                     </li>
-                    <button>저장</button>
+                    <button
+                        onClick={() => {
+                            savePhone();
+                        }}>
+                        저장
+                    </button>
                 </ul>
                 <div className="saved-contact-list-wrap">
                     <form>
@@ -35,50 +81,21 @@ function App() {
                         <button>검색</button>
                     </form>
                     <ul className="saved-contact-list">
-                        <li>
-                            <p>
-                                <span>박은규</span>
-                                <span>010-1111-1111</span>
-                                <span>가족</span>
-                            </p>
-                            <p>
-                                <span>세부사항</span>
-                                <span>삭제</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span>박은규</span>
-                                <span>010-1111-1111</span>
-                                <span>가족</span>
-                            </p>
-                            <p>
-                                <span>세부사항</span>
-                                <span>삭제</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span>박은규</span>
-                                <span>010-1111-1111</span>
-                                <span>가족</span>
-                            </p>
-                            <p>
-                                <span>세부사항</span>
-                                <span>삭제</span>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                <span>박은규</span>
-                                <span>010-1111-1111</span>
-                                <span>가족</span>
-                            </p>
-                            <p>
-                                <span>세부사항</span>
-                                <span>삭제</span>
-                            </p>
-                        </li>
+                        {contactList.map((item, i) => {
+                            return (
+                                <li key={i}>
+                                    <p>
+                                        <span>{item.name}</span>
+                                        <span>{item.number}</span>
+                                        <span>{item.group}</span>
+                                    </p>
+                                    <p>
+                                        <span>세부사항</span>
+                                        <span>삭제</span>
+                                    </p>
+                                </li>
+                            );
+                        })}
                     </ul>
                 </div>
             </main>
