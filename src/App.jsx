@@ -9,7 +9,7 @@ function App() {
     let [groups, setGroups] = useState([...group]);
 
     return (
-        <div className="contact-list-wrap">
+        <div className="app">
             <header className="header">
                 <h1>연락처 리스트</h1>
             </header>

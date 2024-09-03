@@ -9,7 +9,7 @@ export default function ContactListForm({ contactList, setContactList, groups })
         record: "",
     };
     let regName = /^[가-힣]{2,}/;
-    let regNumber = /^010-[0-9]{3, 4}-[0-9]{4}/;
+    let regNumber = /^010-[0-9]{3,4}-[0-9]{4}/;
     /** check [name, number]  */
     let [check, setCheck] = useState([true, true]);
 
@@ -21,17 +21,16 @@ export default function ContactListForm({ contactList, setContactList, groups })
             copy.push(data);
             setContactList(copy);
             localStorage.setItem("contactList", JSON.stringify(copy));
-            inputRef.current.map((c) => {
-                return (c.value = "");
-            });
-        } else {
-            ("");
         }
+        inputRef.current.map((c) => {
+            return (c.value = "");
+        });
     };
     /** 사용자 입력 검사 함수 */
     const checkData = () => {
         let copy = [regName.test(data.name), regNumber.test(data.number)];
         setCheck(copy);
+        console.log(copy[1]);
         return copy[0] && copy[1] ? true : false;
     };
     return (
@@ -66,12 +65,15 @@ export default function ContactListForm({ contactList, setContactList, groups })
             </li>
             <li>
                 <label htmlFor="group">그룹</label>
-                <div>
+                <div className="select-group">
                     <select
                         id="group"
                         onChange={(e) => {
                             data.group = e.target.value;
                         }}>
+                        <option selected disabled hidden>
+                            선택
+                        </option>
                         {groups.map((group, i) => (
                             <option key={i}>{group}</option>
                         ))}
