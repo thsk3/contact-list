@@ -27,7 +27,6 @@ function App() {
                 {showGroup ? <Group groups={groups} setGroups={setGroups} setShowGroup={setShowGroup}></Group> : <></>}
                 {showDetail ? <Detail contactList={contactList} index={index} setshowDetail={setShowDetail}></Detail> : <></>}
             </main>
-            <footer className="footer"></footer>
         </div>
     );
 }

@@ -73,15 +73,22 @@ export default function ContactList({ contactList, setContactList, setIndex, set
                     전체리스트 보기
                 </button>
             </form>
-            <ul className="contact-list">
-                {isSearchList
-                    ? searchList.map((item, i) => {
-                          return list(item, i);
-                      })
-                    : contactList.map((item, i) => {
-                          return list(item, i);
-                      })}
-            </ul>
+            {contactList.length > 0 ? (
+                <ul className="contact-list">
+                    {isSearchList
+                        ? searchList.map((item, i) => {
+                              return list(item, i);
+                          })
+                        : contactList.map((item, i) => {
+                              return list(item, i);
+                          })}
+                </ul>
+            ) : (
+                <div className="empty-list">
+                    <p>아직 저장된 연락처가 없습니다.</p>
+                    <p>연락처를 추가해 보세요!</p>
+                </div>
+            )}
         </div>
     );
 }

@@ -1,19 +1,24 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 /** 추가해야 할 것
  * 1. 그룹이름 중복 검사
- * 2. 그룹 1개일 때는 삭제 불가능
- * 3. 그룹이 1개일 때 선택 안되는 버그 해결
- * 4. 그룹이름이 이미 사용중일 때에는 삭제 불가능하도록 수정
+ * 2. 그룹이름이 이미 사용중일 때에는 삭제 불가능하도록 수정
  */
 export default function Group({ groups, setGroups, setShowGroup }) {
     let inputRef = useRef(null);
     let groupName = "";
-
+    let [deleteMessage, showDeleteMessage] = useState(false);
     const deleteGroup = (i) => {
-        let copy = [...groups];
-        copy.splice(i, 1);
-        setGroups(copy);
-        localStorage.setItem("groups", JSON.stringify(copy));
+        if (groups.length === 1) {
+            showDeleteMessage(true);
+            setTimeout(() => {
+                showDeleteMessage(false);
+            }, 2000);
+        } else {
+            let copy = [...groups];
+            copy.splice(i, 1);
+            setGroups(copy);
+            localStorage.setItem("groups", JSON.stringify(copy));
+        }
     };
     const saveGroup = () => {
         if (groupName.length > 0) {
@@ -61,6 +66,7 @@ export default function Group({ groups, setGroups, setShowGroup }) {
                         추가
                     </button>
                 </div>
+                {deleteMessage ? <p className="delete-message">그룹은 최소 1개 이상이어야 합니다.</p> : <></>}
             </div>
         </div>
     );

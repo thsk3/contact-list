@@ -6,7 +6,7 @@ export default function ContactListForm({ contactList, setContactList, groups, s
     let dataForm = {
         name: "",
         number: "",
-        group: "",
+        group: groups[0] || "",
         memo: "",
     };
 

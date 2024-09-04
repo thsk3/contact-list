@@ -99,6 +99,7 @@ button {
 /* ===== list ===== */
 .contact-list-wrap {
     width: 50%;
+    margin-bottom: 5rem;
 }
 .contact-list-wrap > form {
     margin: 1rem auto;
@@ -140,6 +141,13 @@ button {
     margin-left: 0.5rem;
     padding: 0.3rem 0.5rem;
     border: 1px solid;
+}
+.empty-list {
+    border: 1px solid;
+    border-radius: 1rem;
+    text-align: center;
+    height: 300px;
+    padding-top: 6rem;
 }
 .modal-wrap {
     position: absolute;
@@ -205,6 +213,12 @@ button {
 .group-add-btn > button:hover {
     transition: 0.2s;
     background-color: var(--color-blue);
+}
+.delete-message {
+    margin-top: 5px;
+    text-align: center;
+    font-size: 0.7rem;
+    color: red;
 }
 /* footer */
 .footer {
