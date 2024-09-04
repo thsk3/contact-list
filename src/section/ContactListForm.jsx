@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 
 export default function ContactListForm({ contactList, setContactList, groups, setShowGroup }) {
-    /** [name, number, meme] */
+    /** [name, number, memo] */
     let inputRef = useRef([]);
     let dataForm = {
         name: "",

@@ -1,7 +1,7 @@
-import ContactList from "./ContactList";
-import ContactListForm from "./ContactListForm";
-import Group from "./Group";
-import Detail from "./Detail";
+import ContactList from "./section/ContactList";
+import ContactListForm from "./section/ContactListForm";
+import Group from "./components/Group";
+import Detail from "./components/Detail";
 
 import "./index.css";
 import { useState } from "react";
